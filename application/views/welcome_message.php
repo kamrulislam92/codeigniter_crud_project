@@ -9,10 +9,11 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
 <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
 <div class="sidebar">
   <h1><i class="fa fa-bars push"></i>Animated <span class="color"><strong>Nav</strong></span></h1>
     <ul>
-    <li><a href="#"><i class="fa fa-dashboard push"></i>Home<i class="fa fa-angle-right"></i></a><span class="hover"></span>
+    <li><a href="<?php echo base_url('userController/create'); ?>"><i class="fa fa-dashboard push"></i>Home<i class="fa fa-angle-right"></i></a><span class="hover"></span>
     </li>
     <li><a href="#"><i class="fa fa-user push"></i>About<i class="fa fa-angle-right"></i></a><span class="hover"></span>
       <ul class="sub-menu">
@@ -82,7 +83,7 @@
             </div>
           </div>
         </div>
-        <a href="https://www.linkedin.com/in/younes-elmorabit" target="_blank">
+        <a href="<?php echo base_url('userController/create'); ?>" target="_blank">
           <div class="card-footer bg-light text-secondary">
             <span class="float-left">More details</span>
             <span class="float-right"><i class="fa fa-arrow-circle-right"></i></span>
