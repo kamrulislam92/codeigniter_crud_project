@@ -311,9 +311,7 @@
  .color {
 	 color: #d00355;
 }
-*{
-  margin:0px;
-}
+
 
 body{
   background: #202838;
