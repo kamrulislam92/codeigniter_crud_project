@@ -18,10 +18,18 @@ class userController extends CI_Controller {
             $this->userModel->create($formArray);
             $this->session->set_flashdata('success','This record insert successfully!');
             redirect(base_url().'userController/create');
-
-
-        }
-
+          }
     }
+    function view(){
+        $this->load->model('userModel');
+
+        $data['view_users'] = $this->userModel->getViewUser();
+
+        $this->load->view('view', $data);
+    }
+   function edit($id){
+     $data['edit_data'] = $id;
+       $this->load->view('edit',$data);
+   }
 
 }

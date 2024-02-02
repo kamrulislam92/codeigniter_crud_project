@@ -13,9 +13,9 @@
 <div class="sidebar">
   <h1><i class="fa fa-bars push"></i>Animated <span class="color"><strong>Nav</strong></span></h1>
     <ul>
-    <li><a href="<?php echo base_url('userController/create'); ?>"><i class="fa fa-dashboard push"></i>Home<i class="fa fa-angle-right"></i></a><span class="hover"></span>
+    <li><a href="<?php echo base_url('userController/create'); ?>"><i class="fa fa-home" aria-hidden="true"></i>User Create<i class="fa fa-angle-right"></i></a><span class="hover"></span>
     </li>
-    <li><a href="#"><i class="fa fa-user push"></i>About<i class="fa fa-angle-right"></i></a><span class="hover"></span>
+    <li><a href="<?php echo base_url('userController/view'); ?>"><i class="fa fa-user push"></i>View User<i class="fa fa-angle-right"></i></a><span class="hover"></span>
       <ul class="sub-menu">
          <li><a href="#">Add User<i class="fa fa-angle-right"></i></a><span class="hover"></span></li>
          <li><a href="#">Manage Users<i class="fa fa-angle-right"></i></a><span class="hover"></span></li>
