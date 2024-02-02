@@ -11,7 +11,10 @@
 <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
 <div class="sidebar">
-  <h1><i class="fa fa-bars push"></i>Animated <span class="color"><strong>Nav</strong></span></h1>
+  <a href="<?php echo base_url('/'); ?>">
+  <h1>
+    <i class="fa fa-bars push"></i>Animated <span class="color"><strong>Nav</strong></span></h1>
+</a>
     <ul>
     <li><a href="<?php echo base_url('userController/create'); ?>"><i class="fa fa-home" aria-hidden="true"></i>User Create<i class="fa fa-angle-right"></i></a><span class="hover"></span>
     </li>

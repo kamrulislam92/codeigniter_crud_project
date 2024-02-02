@@ -6,13 +6,25 @@
             $this->db->insert('users', $formArray);
         }
         public function getViewUser() {
-            // Fetch data from the database or any other source
+            
             $query = $this->db->get('users');
             return $query->result();
         }
 
-
-
+        public function get_user_by_id($id) {
+            $this->db->where('id', $id);
+            $query = $this->db->get('users');
+        
+            if ($query->num_rows() > 0) {
+                return $query->row_array();
+            } else {
+                return array();
+            }
+        }
+        public function update_user($id, $data) {
+            $this->db->where('id', $id);
+            $this->db->update('users', $data);
+        }
     }
 
 ?>

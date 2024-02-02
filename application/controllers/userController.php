@@ -2,9 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class userController extends CI_Controller {
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('userModel');
+    }
 
     function create(){
-        $this->load->model('userModel');
+      
         $this->form_validation->set_rules('name','Name','required');
         $this->form_validation->set_rules('email','Email','required|valid_email');
         if($this->form_validation->run() == false){
@@ -17,19 +21,35 @@ class userController extends CI_Controller {
             $formArray['created_at'] = date('Y-m-d');
             $this->userModel->create($formArray);
             $this->session->set_flashdata('success','This record insert successfully!');
-            redirect(base_url().'userController/create');
+            redirect(base_url().'userController/view');
           }
     }
     function view(){
-        $this->load->model('userModel');
+     
 
         $data['view_users'] = $this->userModel->getViewUser();
 
         $this->load->view('view', $data);
     }
    function edit($id){
-     $data['edit_data'] = $id;
-       $this->load->view('edit',$data);
+  
+        $data['edit_data'] = $this->userModel->get_user_by_id($id);
+        if (empty($data['edit_data'])) {
+            $this->load->view('user_not_found');
+        } else {
+            $this->load->view('edit', $data);
+        }
    }
+ 
+   public function update() {
+        $id = $this->input->post('id');
+        $data = array(
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+        );
+        $this->userModel->update_user($id, $data);
+        redirect('userController/view/'. $id);
+    }
+
 
 }

@@ -14,7 +14,10 @@
             </div>
         </div>
         <div class="container mt-3 bg-info p-5">
-            <h3>Create User</h3>
+           <div style="display:grid; grid-template-columns:50% 50%;" > 
+               <h3>Create User</h3> 
+                <h3  class="text-end" ><a href="<?php echo base_url('/'); ?>" class="text-uppercase text-end">Back to home</a></h3>
+            </div>
             <hr>
             <form method="post" name="createUser" action="<?php echo base_url('userController/create');?>">
                 <div class="row">
