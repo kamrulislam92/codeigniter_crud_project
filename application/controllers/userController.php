@@ -7,31 +7,34 @@ class userController extends CI_Controller {
         $this->load->model('userModel');
     }
 
-    function create(){
-      
-        $this->form_validation->set_rules('name','Name','required');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
-        if($this->form_validation->run() == false){
-            $this->load->view('create');
-        }else{
-            // Save user to database
-            $formArray = array();
-            $formArray['name'] = $this->input->post('name');
-            $formArray['email'] = $this->input->post('email');
-            $formArray['created_at'] = date('Y-m-d');
+
+    public function create() {
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+    
+        if ($this->form_validation->run() == false) {
+            $data['main_content'] = $this->load->view('create', array(), TRUE);
+            $this->load->view('template', $data);
+        } 
+        else {
+            // Save user to the database
+            $formArray = array(
+                'name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'created_at' => date('Y-m-d')
+            );
             $this->userModel->create($formArray);
-            $this->session->set_flashdata('success','This record insert successfully!');
-            redirect(base_url().'userController/view');
-          }
+            $this->session->set_flashdata('success', 'This record inserted successfully!');
+            redirect(base_url() . 'userController/view');
+        }
     }
-    function view(){
-     
-
+    
+    public function view() {
         $data['view_users'] = $this->userModel->getViewUser();
-
-        $this->load->view('view', $data);
+        $data['main_content'] = $this->load->view('view', $data, TRUE); // Use TRUE to get the view as a string
+        $this->load->view('template', $data);
     }
-   function edit($id){
+    public function edit($id){
   
         $data['edit_data'] = $this->userModel->get_user_by_id($id);
         if (empty($data['edit_data'])) {
@@ -51,5 +54,8 @@ class userController extends CI_Controller {
         redirect('userController/view/'. $id);
     }
 
-
+    public function delete($id) {
+        $this->userModel->delete_user($id);
+        redirect('userController/view');
+    }
 }

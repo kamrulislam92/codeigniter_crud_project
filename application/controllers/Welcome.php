@@ -20,6 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+	
+		$data['main_content'] = $this->load->view('home', NULL, TRUE); // Use TRUE to get the view as a string
+		$this->load->view('template', $data);
+		
 	}
 }

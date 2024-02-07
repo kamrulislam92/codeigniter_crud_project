@@ -6,7 +6,7 @@
             $this->db->insert('users', $formArray);
         }
         public function getViewUser() {
-            
+
             $query = $this->db->get('users');
             return $query->result();
         }
@@ -24,6 +24,10 @@
         public function update_user($id, $data) {
             $this->db->where('id', $id);
             $this->db->update('users', $data);
+        }
+        public function delete_user($id) {
+            $this->db->where('id', $id);
+            $this->db->delete('users');
         }
     }
 
